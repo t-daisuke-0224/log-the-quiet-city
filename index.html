@@ -60,17 +60,13 @@
         overflow-anchor: none;
       }
       html, body {
-        height: 100%;
-        min-height: 100%;
-        height: -webkit-fill-available;
-        min-height: -webkit-fill-available;
+        height: auto;     /* avoid iOS Chrome toolbar math */
+        min-height: 0;    /* let .page own the layout height */
       }
       .page {
         display: flex;
         flex-direction: column;
-        /* Use document height instead of dynamic viewport units to avoid extra scroll on iOS Chrome */
-        min-height: 100%;
-        min-height: -webkit-fill-available;
+        min-height: var(--app-vh, 100vh); /* JS-updated stable viewport height */
       }
       main { flex: 1 0 auto; }
       body { overscroll-behavior-y: contain; }
@@ -238,15 +234,15 @@
       }
 
       footer {
-        /* Not fixed — participates in normal flow */
-        position: static;
+        position: static;           /* normal flow */
         width: 100%;
-        margin-top: auto;   /* pushes footer to bottom when content is short */
+        margin-top: auto;           /* stick to bottom when content is short */
         text-align: center;
         font-size: 0.8rem;
         color: #aaa;
         border-top: 1px solid #ddd;
-        padding: 2rem 0;
+        padding: 2rem 0;            /* consistent spacing */
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
         background: #fff;
       }
 
@@ -287,6 +283,15 @@
         }
       }
     </style>
+    <style>
+      /* fallbacks for old engines (in case JS fails) */
+      @supports (height: 100dvh) {
+        .page { min-height: 100dvh; }
+      }
+      @supports (height: 100svh) and (not(height: 100dvh)) {
+        .page { min-height: 100svh; }
+      }
+    </style>
     <!-- Favicons -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="favicon.png" type="image/png" sizes="32x32" />
@@ -294,6 +299,16 @@
     <link rel="mask-icon" href="favicon.svg" color="#111111" />
   </head>
   <body>
+    <script>
+      // Stable viewport height for iOS Chrome (and as a general fallback)
+      function setAppVH() {
+        const vh = window.innerHeight;
+        document.documentElement.style.setProperty('--app-vh', vh + 'px');
+      }
+      setAppVH();
+      window.addEventListener('resize', setAppVH);
+      window.addEventListener('orientationchange', () => setTimeout(setAppVH, 250));
+    </script>
     <div class="page">
     <div id="modal" class="modal">
       <img id="modal-img" class="modal-content" />
