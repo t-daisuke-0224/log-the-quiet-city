@@ -62,13 +62,15 @@
       html, body {
         height: 100%;
         min-height: 100%;
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
       }
       .page {
         display: flex;
         flex-direction: column;
-        /* Prefer dynamic viewport units to avoid extra scroll below footer on iOS Chrome */
-        min-height: 100svh;
-        min-height: 100dvh;
+        /* Use document height instead of dynamic viewport units to avoid extra scroll on iOS Chrome */
+        min-height: 100%;
+        min-height: -webkit-fill-available;
       }
       main { flex: 1 0 auto; }
       body { overscroll-behavior-y: contain; }
@@ -244,7 +246,7 @@
         font-size: 0.8rem;
         color: #aaa;
         border-top: 1px solid #ddd;
-        padding: 1.5rem 0;  /* balanced vertical padding */
+        padding: 2rem 0;
         background: #fff;
       }
 
