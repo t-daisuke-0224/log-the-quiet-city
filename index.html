@@ -59,11 +59,13 @@
       body {
         overflow-anchor: none;
       }
-      html, body { height: 100%; }
+      html, body { 
+        height: auto;          /* avoid Chrome iOS extra scroll */
+        min-height: 100%;
+      }
       .page {
         /* Use viewport units so the footer sits at the bottom without being fixed */
-        min-height: 100svh;     /* iOS/Chrome mobile-safe viewport */
-        min-height: 100dvh;     /* fallback for browsers without svh */
+        min-height: calc(var(--vh, 1vh) * 100);  /* robust mobile viewport height */
         display: flex;
         flex-direction: column;
       }
@@ -467,6 +469,18 @@
     </footer>
     </div><!-- /.page -->
   </body>
+  <script>
+    // Robust mobile viewport height fix (prevents extra blank scroll under footer on mobile Chrome)
+    (function() {
+      function setVH() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', vh + 'px');
+      }
+      setVH();
+      window.addEventListener('resize', setVH);
+      window.addEventListener('orientationchange', setVH);
+    })();
+  </script>
   <script>
     // 初回表示/リロード時のスクロール位置を先頭に固定（#topが付いていてもトップへ）
     if ("scrollRestoration" in history) {
