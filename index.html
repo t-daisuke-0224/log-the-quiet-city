@@ -248,19 +248,24 @@
       footer {
         position: static;
         width: 100%;
-        margin-top: auto;
+        margin-top: auto;           /* stick to bottom when content is short */
         text-align: center;
         font-size: 0.8rem;
         color: #aaa;
         border-top: 1px solid #ddd;
-        /* 同じ余白に統一（左右24px、下64px + セーフエリア） */
-        padding: 20px 24px 64px;
+        /* Center by layout, not by horizontal padding */
+        display: flex;
+        flex-direction: column;
+        align-items: center;        /* true horizontal centering */
+        padding: 20px 0 64px;       /* no side padding; vertical only */
         padding-bottom: max(64px, env(safe-area-inset-bottom));
         background: #fff;
         box-sizing: border-box;
       }
       footer nav {
         margin-bottom: 1rem;
+        padding: 0 24px;            /* add symmetric horizontal breathing room */
+        display: inline-block;      /* keeps nav sized to its content and centered */
       }
       footer nav a {
         color: #aaa;
