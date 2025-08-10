@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light only" />
     <title>LOG. / The Quiet City</title>
     <style>
       .modal {
@@ -73,6 +74,21 @@
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         border-bottom: 1px solid #eee; /* 明確な区切り線を追加 */
         /* height remains unchanged */
+      }
+
+      /* Force light theme even under system dark mode */
+      @media (prefers-color-scheme: dark) {
+        body { background-color: #fff; color: #111; }
+        .sticky-header.scrolled {
+          background-color: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+          border-bottom: 1px solid #eee;
+        }
+        section { color: #333; }
+        .caption { color: #222; }
+        footer { color: #aaa; border-top: 1px solid #ddd; }
       }
 
       .logo {
@@ -217,6 +233,14 @@
         border: none;
         border-top: 1px solid #ddd;
         width: 60%;
+      }
+
+      /* Wider <hr> on small screens for better balance */
+      @media (max-width: 640px) {
+        .entry + hr {
+          width: 86%;
+          margin: 28px auto 80px;
+        }
       }
     </style>
     <!-- Favicons -->
