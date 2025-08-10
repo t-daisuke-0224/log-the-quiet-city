@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
     <title>About – LOG. / The Quiet City</title>
     <style>
       :root {
@@ -16,11 +17,8 @@
       }
       html,
       body {
-        overflow-x: hidden;
-      }
-      html,
-      body {
         height: 100%;
+        overflow-x: hidden;
       }
       body {
         margin: 0;
@@ -29,6 +27,9 @@
         background: var(--bg);
         color: var(--fg);
         letter-spacing: 0.015em;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
       .sticky-header {
         position: fixed;
@@ -60,7 +61,7 @@
       }
 
       main {
-        min-height: calc(100% - 120px);
+        flex: 1;
         display: grid;
         place-items: center;
         padding: 8rem 1.5rem 3rem;
@@ -99,19 +100,27 @@
       }
 
       footer {
-        border-top: 1px solid var(--border);
+        position: static;
+        width: 100%;
+        margin-top: auto;
         text-align: center;
-        padding: 1.25rem 1.5rem 3rem;
-        color: #8a8a8a;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        color: #aaa;
+        border-top: 1px solid #ddd;
+        /* 同じ余白に統一（左右24px、下64px + セーフエリア） */
+        padding: 20px 24px 64px;
+        padding-bottom: max(64px, env(safe-area-inset-bottom));
+        background: #fff;
+        box-sizing: border-box;
       }
       footer nav {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
       }
       footer nav a {
-        color: #8a8a8a;
+        color: #aaa;
         text-decoration: none;
         margin: 0 0.5rem;
+        font-size: 0.85rem;
       }
       footer nav a:hover {
         text-decoration: underline;
