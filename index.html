@@ -39,12 +39,18 @@
           sans-serif;
         background-color: #fff;
         color: #111;
+        overflow-x: hidden;
       }
       body {
         overflow-anchor: none;
       }
       html, body { height: 100%; }
-      .page { min-height: 100svh; display: flex; flex-direction: column; }
+      .page {
+        min-height: 100%;       /* fallback to avoid iOS extra scroll */
+        min-height: 100dvh;     /* modern viewport unit, prevents extra space under footer */
+        display: flex;
+        flex-direction: column;
+      }
       main { flex: 1 0 auto; }
       body { overscroll-behavior-y: contain; }
       body.scroll-lock {
@@ -211,7 +217,6 @@
       }
 
       footer {
-        margin-top: 0;
         margin-top: auto;
         text-align: center;
         font-size: 0.8rem;
