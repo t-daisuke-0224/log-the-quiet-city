@@ -55,15 +55,15 @@
         background-color: #fff;
         color: #111;
         overflow-x: hidden;
-        margin-bottom: 80px; /* footerが隠れないよう余白追加 (footer高さに合わせて調整) */
       }
       body {
         overflow-anchor: none;
       }
       html, body { height: 100%; }
       .page {
-        min-height: 100%;       /* fallback to avoid iOS extra scroll */
-        min-height: 100dvh;     /* modern viewport unit, prevents extra space under footer */
+        /* Use viewport units so the footer sits at the bottom without being fixed */
+        min-height: 100svh;     /* iOS/Chrome mobile-safe viewport */
+        min-height: 100dvh;     /* fallback for browsers without svh */
         display: flex;
         flex-direction: column;
       }
@@ -233,18 +233,15 @@
       }
 
       footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
+        /* Not fixed — participates in normal flow */
+        position: static;
         width: 100%;
-        z-index: 100;
-        margin-top: auto;
+        margin-top: auto;   /* pushes footer to bottom when content is short */
         text-align: center;
         font-size: 0.8rem;
         color: #aaa;
-        padding-bottom: 2rem;
         border-top: 1px solid #ddd;
-        padding-top: 1.5rem;
+        padding: 1.5rem 0;  /* balanced vertical padding */
         background: #fff;
       }
 
