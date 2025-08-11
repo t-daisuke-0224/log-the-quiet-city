@@ -33,6 +33,12 @@
     <style>
       /* 常に縦スクロールバーを確保して左右のセンタリング差を無くす */
       html { overflow-y: scroll; }
+      /* Scrollbar styling (light page) */
+      :root{--scroll-track:#fff;--scroll-thumb:#e0e0e0}
+      *::-webkit-scrollbar{width:12px;height:12px}
+      *::-webkit-scrollbar-track{background:var(--scroll-track)}
+      *::-webkit-scrollbar-thumb{background:var(--scroll-thumb);border-radius:8px;border:3px solid var(--scroll-track)}
+      html{scrollbar-color:var(--scroll-thumb) var(--scroll-track);scrollbar-width:thin}
       .modal {
         display: none;
         position: fixed;
@@ -82,8 +88,8 @@
       section h2{font-size:clamp(18px,1.4rem,22px);margin:0 0 1rem}
       section p{line-height:1.8;letter-spacing:.02em;margin:.6rem 0}
 
-      main{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:4rem 2rem 2rem}
-      .photo-block{margin:64px 0}
+      main{flex:1 0 auto;display:flex;flex-direction:column;align-items:stretch;text-align:center;padding:4rem 2rem 2rem}
+      .photo-block{margin:64px 0;width:100%}
       .photo{width:100%;max-width:600px;aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
       .photo:hover{transform:scale(1.02)}
       .caption{font-size:.95rem;color:#222;max-width:500px;margin:.25rem auto .25rem;line-height:1.6;letter-spacing:.02em}
