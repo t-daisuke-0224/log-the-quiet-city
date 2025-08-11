@@ -81,6 +81,7 @@
       }
       /* === Common, simplified responsive shell === */
       html,body{height:100%}
+      :root{--figure-w: clamp(520px,80vmin,640px)}
       .page{min-height:100%;display:flex;flex-direction:column}
       .shell{max-width:640px;margin:0 auto;padding:0 16px}
 
@@ -90,11 +91,11 @@
 
       main{flex:1 0 auto;display:flex;flex-direction:column;align-items:stretch;text-align:center;padding:4rem 2rem 2rem}
       .photo-block{margin:64px 0;width:100%}
-      .photo{width:clamp(520px,80vmin,640px);aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
+      .photo{width:var(--figure-w);aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
       .photo:hover{transform:scale(1.02)}
-      .caption{font-size:.95rem;color:#222;max-width:500px;margin:.25rem auto .25rem;line-height:1.6;letter-spacing:.02em}
-      .date-location{margin-top:.5rem;font-size:.85rem;color:#666;letter-spacing:.015em}
-      .entry+hr{margin:32px auto 96px;border:0;border-top:1px solid #ddd;width:min(86%,600px)}
+      .caption{font-size:.95rem;color:#222;width:var(--figure-w);margin:.25rem auto .25rem;line-height:1.6;letter-spacing:.02em}
+      .date-location{margin-top:.5rem;font-size:.85rem;color:#666;letter-spacing:.015em;width:var(--figure-w);margin-left:auto;margin-right:auto}
+      .entry+hr{margin:32px auto 96px;border:0;border-top:1px solid #ddd;width:var(--figure-w)}
 
       /* Footer: strict centering, no side padding bias */
       footer{position:static;width:100%;margin-top:auto;text-align:center;font-size:.8rem;color:#aaa;border-top:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 0 max(64px, env(safe-area-inset-bottom));background:#fff;box-sizing:border-box}
