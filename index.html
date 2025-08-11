@@ -99,11 +99,11 @@
 
       /* Footer: strict centering, no side padding bias */
       footer{position:static;width:100%;margin-top:auto;text-align:center;font-size:.8rem;color:#aaa;border-top:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 0 max(64px, env(safe-area-inset-bottom));background:#fff;box-sizing:border-box}
-      footer nav{display:inline-flex;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1rem;padding:0 16px}
+      footer nav{display:inline-flex;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1rem;padding:0;white-space:nowrap}
       footer nav a{color:#aaa;text-decoration:none;margin:0 .5rem;font-size:.85rem}
       footer nav a:hover{text-decoration:underline}
       footer *{box-sizing:inherit;margin:0}
-      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
       .copyright{line-height:1}
 
       @media (max-width:640px){
