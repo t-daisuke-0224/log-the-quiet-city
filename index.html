@@ -33,6 +33,7 @@
     <style>
       /* 常に縦スクロールバーを確保して左右のセンタリング差を無くす */
       html { overflow-y: scroll; }
+      *,*::before,*::after{box-sizing:border-box}
       /* Scrollbar styling (light page) */
       :root{--scroll-track:#fff;--scroll-thumb:#e0e0e0}
       *::-webkit-scrollbar{width:12px;height:12px}
@@ -83,13 +84,13 @@
       html,body{height:100%}
       :root{--figure-w: clamp(520px,80vmin,640px)}
       .page{min-height:100%;display:flex;flex-direction:column}
-      .shell{max-width:640px;margin:0 auto;padding:0 24px}
+      .shell{max-width:none;margin:0 auto;padding:0}
 
       section{margin:8rem 0 2rem;text-align:center}
       section h2{font-size:clamp(18px,1.4rem,22px);margin:0 0 1rem}
       section p{line-height:1.8;letter-spacing:.02em;margin:.6rem 0}
 
-      main{flex:1 0 auto;display:flex;flex-direction:column;align-items:stretch;text-align:center;padding:4rem 2rem 2rem}
+      main{flex:1 0 auto;display:flex;flex-direction:column;align-items:stretch;text-align:center;padding:4rem 0 2rem}
       .photo-block{margin:64px 0;width:100%}
       .photo{width:var(--figure-w);aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
       .photo:hover{transform:scale(1.02)}
@@ -103,7 +104,7 @@
       footer nav a{color:#aaa;text-decoration:none;margin:0 .5rem;font-size:.85rem}
       footer nav a:hover{text-decoration:underline}
       footer *{box-sizing:inherit;margin:0}
-      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
       .copyright{line-height:1}
 
       @media (max-width:640px){
@@ -240,7 +241,7 @@
           style="
   width: var(--figure-w);
   margin: 8rem auto 2rem;
-  padding: 0 24px;
+  padding: 0;
   font-size: 1rem;
   line-height: 1.7;
   color: #333;
