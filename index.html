@@ -68,7 +68,7 @@
 
       body {
         /* スクロールバー分のレイアウトを確保して左右の見え方を安定化 */
-        scrollbar-gutter: stable both-edges;
+        scrollbar-gutter: stable;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
           sans-serif;
@@ -83,7 +83,7 @@
       html,body{height:100%}
       :root{--figure-w: clamp(520px,80vmin,640px)}
       .page{min-height:100%;display:flex;flex-direction:column}
-      .shell{max-width:640px;margin:0 auto;padding:0 16px}
+      .shell{max-width:640px;margin:0 auto;padding:0 24px}
 
       section{margin:8rem 0 2rem;text-align:center}
       section h2{font-size:clamp(18px,1.4rem,22px);margin:0 0 1rem}
@@ -103,7 +103,7 @@
       footer nav a{color:#aaa;text-decoration:none;margin:0 .5rem;font-size:.85rem}
       footer nav a:hover{text-decoration:underline}
       footer *{box-sizing:inherit;margin:0}
-      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
       .copyright{line-height:1}
 
       @media (max-width:640px){
@@ -240,7 +240,7 @@
           style="
   width: var(--figure-w);
   margin: 8rem auto 2rem;
-  padding: 0 16px;
+  padding: 0 24px;
   font-size: 1rem;
   line-height: 1.7;
   color: #333;
