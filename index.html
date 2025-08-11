@@ -103,6 +103,8 @@
       footer nav a{color:#aaa;text-decoration:none;margin:0 .5rem;font-size:.85rem}
       footer nav a:hover{text-decoration:underline}
       footer *{box-sizing:inherit;margin:0}
+      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0 16px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+      .copyright{line-height:1}
 
       @media (max-width:640px){
         section{margin:7rem 0 1.5rem}
@@ -393,14 +395,13 @@
       </div>
 
       <footer>
-        <nav>
-          <a href="#">All</a> / <a href="about.html">About</a> /
-          <a
-            href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG"
-            >Contact</a
-          >
-        </nav>
-        &copy; 2025 Daisuke Takaku
+        <div class="footer-inner">
+          <nav>
+            <a href="#">All</a> / <a href="about.html">About</a> /
+            <a href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG">Contact</a>
+          </nav>
+          <div class="copyright">&copy; 2025 Daisuke Takaku</div>
+        </div>
       </footer>
     </div>
     <!-- /.page -->
