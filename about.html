@@ -15,11 +15,32 @@
       * {
         box-sizing: border-box;
       }
-      html { overflow-y: scroll; }
+      html {
+        overflow-y: scroll;
+        /* Make scrollbar consistent and subtle on dark bg (Firefox) */
+        scrollbar-color: #333 var(--bg);
+        scrollbar-width: thin;
+      }
       html,
       body {
         height: 100%;
         overflow-x: hidden;
+      }
+      /* WebKit-based browsers (Chrome/Safari) */
+      *::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      *::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      *::-webkit-scrollbar-thumb {
+        background-color: #333;
+        border-radius: 8px;
+        border: 2px solid var(--bg);
+      }
+      *::-webkit-scrollbar-thumb:hover {
+        background-color: #444;
       }
       body {
         /* スクロールバー分のレイアウトを確保して左右の見え方を安定化 */
