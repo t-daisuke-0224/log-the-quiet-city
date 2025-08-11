@@ -170,7 +170,12 @@
       /*   cursor: pointer; */
       /* } */
       footer nav {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 1rem;
+        padding: 0 16px;
       }
 
       footer nav a {
@@ -257,15 +262,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;        /* true horizontal centering */
-        padding: 20px 0 64px;       /* no side padding; vertical only */
-        padding-bottom: max(64px, env(safe-area-inset-bottom));
+        justify-content: center;
+        padding: 20px 0 max(64px, env(safe-area-inset-bottom));
         background: #fff;
         box-sizing: border-box;
       }
+      footer * {
+        box-sizing: inherit;
+        margin: 0;
+      }
       footer nav {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 1rem;
-        padding: 0 24px;            /* add symmetric horizontal breathing room */
-        display: inline-block;      /* keeps nav sized to its content and centered */
+        padding: 0 16px;
       }
       footer nav a {
         color: #aaa;
