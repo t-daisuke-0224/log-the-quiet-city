@@ -20,6 +20,7 @@
     <meta property="og:locale" content="ja_JP" />
     <meta name="robots" content="index,follow" />
     <style>
+      :root { --content-width: 640px; --side-pad: 16px; }
       html {
         color-scheme: light;
       }
@@ -88,10 +89,11 @@
         flex-direction: column;
       }
       .shell {
-        max-width: 640px;
+        max-width: var(--content-width);
         margin: 0 auto;
-        padding: 0 16px;
+        padding: 0 var(--side-pad);
       }
+      .entry { width: 100%; }
 
       section {
         margin: 8rem 0 2rem;
@@ -119,14 +121,15 @@
         margin: 64px 0;
       }
       .photo {
-        width: 100%;
-        max-width: 600px;
+        width: clamp(260px, 90vw, 600px);
+        max-width: 100%;
         aspect-ratio: 1/1;
         background: #000 center/cover;
         margin: 0 auto 24px;
         border: 1px solid #ddd;
         box-sizing: border-box;
         transition: transform 0.3s ease;
+        display: block;
       }
       .photo:hover {
         transform: scale(1.02);
@@ -169,6 +172,15 @@
         background: #fff;
         box-sizing: border-box;
       }
+      footer .footer-inner {
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 0 var(--side-pad);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      footer .copyright { line-height: 1; }
       footer nav {
         display: inline-flex;
         gap: 0.5rem;
@@ -486,14 +498,13 @@
       </div>
 
       <footer>
-        <nav>
-          <a href="#">All</a> / <a href="about.html">About</a> /
-          <a
-            href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG"
-            >Contact</a
-          >
-        </nav>
-        &copy; 2025 Daisuke Takaku
+        <div class="footer-inner">
+          <nav>
+            <a href="#">All</a> / <a href="about.html">About</a> /
+            <a href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG">Contact</a>
+          </nav>
+          <div class="copyright">&copy; 2025 Daisuke Takaku</div>
+        </div>
       </footer>
     </div>
     <!-- /.page -->
