@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <title>LOG. / The Quiet City</title>
+    <meta
+      name="description"
+      content="LOG. / The Quiet City — 静けさの中に漂う都市の表情を切り取る写真プロジェクト。モノクロームの東京、日常に潜む非日常を記録します。"
+    />
+    <link rel="canonical" href="https://USERNAME.github.io/REPO/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LOG. / The Quiet City" />
+    <meta
+      property="og:description"
+      content="静けさの中に漂う都市の表情を切り取る写真プロジェクト。"
+    />
+    <meta property="og:image" content="favicon.png" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="robots" content="index,follow" />
     <style>
       html {
         color-scheme: light;
@@ -63,27 +77,130 @@
       body {
         overflow-anchor: none;
       }
+      /* === Common, simplified responsive shell === */
       html,
       body {
-        height: auto; /* avoid iOS Chrome toolbar math */
-        min-height: 0; /* let .page own the layout height */
+        height: 100%;
       }
       .page {
+        min-height: 100%;
         display: flex;
         flex-direction: column;
-        min-height: var(
-          --app-vh,
-          100vh
-        ); /* JS-updated stable viewport height */
       }
+      .shell {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+
+      section {
+        margin: 8rem 0 2rem;
+        text-align: center;
+      }
+      section h2 {
+        font-size: clamp(18px, 1.4rem, 22px);
+        margin: 0 0 1rem;
+      }
+      section p {
+        line-height: 1.8;
+        letter-spacing: 0.02em;
+        margin: 0.6rem 0;
+      }
+
       main {
         flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 2rem 2rem;
       }
-      body {
-        overscroll-behavior-y: contain;
+      .photo-block {
+        margin: 64px 0;
       }
-      body.scroll-lock {
-        overflow: hidden;
+      .photo {
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 1/1;
+        background: #000 center/cover;
+        margin: 0 auto 24px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+      }
+      .photo:hover {
+        transform: scale(1.02);
+      }
+      .caption {
+        font-size: 0.95rem;
+        color: #222;
+        max-width: 500px;
+        margin: 0.25rem auto 0.25rem;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+      }
+      .date-location {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #666;
+        letter-spacing: 0.015em;
+      }
+      .entry + hr {
+        margin: 32px auto 96px;
+        border: 0;
+        border-top: 1px solid #ddd;
+        width: min(86%, 600px);
+      }
+
+      /* Footer: strict centering, no side padding bias */
+      footer {
+        position: static;
+        width: 100%;
+        margin-top: auto;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #aaa;
+        border-top: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0 max(64px, env(safe-area-inset-bottom));
+        background: #fff;
+        box-sizing: border-box;
+      }
+      footer nav {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        padding: 0 16px;
+      }
+      footer nav a {
+        color: #aaa;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        font-size: 0.85rem;
+      }
+      footer nav a:hover {
+        text-decoration: underline;
+      }
+      footer * {
+        box-sizing: inherit;
+        margin: 0;
+      }
+
+      @media (max-width: 640px) {
+        section {
+          margin: 7rem 0 1.5rem;
+        }
+        .photo-block {
+          margin: 56px 0;
+        }
+        .entry + hr {
+          margin: 28px auto 80px;
+        }
       }
 
       .sticky-header {
@@ -165,128 +282,8 @@
         scroll-behavior: smooth;
       }
 
-      /* .menu-icon { removed for hamburger menu deletion */
-      /*   font-size: 1.5rem; */
-      /*   cursor: pointer; */
-      /* } */
-      footer nav {
-        display: inline-flex;
-        gap: 0.5rem;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-        padding: 0 16px;
-      }
-
-      footer nav a {
-        color: #aaa;
-        text-decoration: none;
-        margin: 0 0.5rem;
-        font-size: 0.85rem;
-      }
-
-      footer nav a:hover {
-        text-decoration: underline;
-      }
-
-      main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 4rem 2rem 2rem; /* Adjusted for fixed header height */
-      }
-
-      .date-location {
-        margin-top: 0.5rem;
-        font-size: 0.85rem;
-        color: #666;
-      }
-
-      .photo-block img {
-        margin-bottom: 24px; /* 写真とキャプションの間に余白を追加 */
-        /* Not used, since .photo uses background-image */
-      }
-
-      .photo-block {
-        margin-bottom: 64px; /* 各ブロック同士の余白を増やす */
-      }
-
-      .photo {
-        width: 80vmin;
-        max-width: 600px;
-        aspect-ratio: 1 / 1;
-        background-color: #000 !important;
-        background-size: cover;
-        background-position: center;
-        margin-bottom: 2.5rem;
-        transition: transform 0.3s ease;
-        border: 1.5px solid #ddd;
-        box-sizing: border-box;
-      }
-
-      .photo:hover {
-        transform: scale(1.02);
-      }
-
-      .caption {
-        font-size: 0.95rem;
-        color: #222;
-        max-width: 500px;
-        margin: 0 auto 0.25rem;
-        text-align: center;
-        line-height: 1.6; /* わずかに行間UP */
-        letter-spacing: 0.02em; /* 字間をほんの少し広げる */
-      }
-      .date-location {
-        letter-spacing: 0.015em;
-      }
-      section p {
-        line-height: 1.8;
-        letter-spacing: 0.02em;
-      }
-
-      .caption:hover {
-        color: #000;
-      }
-
-      footer {
-        position: static;
-        width: 100%;
-        margin-top: auto;           /* stick to bottom when content is short */
-        text-align: center;
-        font-size: 0.8rem;
-        color: #aaa;
-        border-top: 1px solid #ddd;
-        /* Center by layout, not by horizontal padding */
-        display: flex;
-        flex-direction: column;
-        align-items: center;        /* true horizontal centering */
-        justify-content: center;
-        padding: 20px 0 max(64px, env(safe-area-inset-bottom));
-        background: #fff;
-        box-sizing: border-box;
-      }
-      footer * {
-        box-sizing: inherit;
-        margin: 0;
-      }
-      footer nav {
-        display: inline-flex;
-        gap: 0.5rem;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-        padding: 0 16px;
-      }
-      footer nav a {
-        color: #aaa;
-        text-decoration: none;
-        margin: 0 0.5rem;
-        font-size: 0.85rem;
-      }
-      footer nav a:hover {
-        text-decoration: underline;
+      body.scroll-lock {
+        overflow: hidden;
       }
 
       .exif-info {
@@ -311,33 +308,6 @@
         margin-left: auto;
         margin-right: auto;
       }
-      .entry + hr {
-        margin: 32px auto 96px;
-        border: none;
-        border-top: 1px solid #ddd;
-        width: 60%;
-      }
-
-      /* Wider <hr> on small screens for better balance */
-      @media (max-width: 640px) {
-        .entry + hr {
-          width: 86%;
-          margin: 28px auto 80px;
-        }
-      }
-    </style>
-    <style>
-      /* fallbacks for old engines (in case JS fails) */
-      @supports (height: 100dvh) {
-        .page {
-          min-height: 100dvh;
-        }
-      }
-      @supports (height: 100svh) and (not (height: 100dvh)) {
-        .page {
-          min-height: 100svh;
-        }
-      }
     </style>
     <!-- Favicons -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -346,18 +316,6 @@
     <link rel="mask-icon" href="favicon.svg" color="#111111" />
   </head>
   <body>
-    <script>
-      // Stable viewport height for iOS Chrome (and as a general fallback)
-      function setAppVH() {
-        const vh = window.innerHeight;
-        document.documentElement.style.setProperty("--app-vh", vh + "px");
-      }
-      setAppVH();
-      window.addEventListener("resize", setAppVH);
-      window.addEventListener("orientationchange", () =>
-        setTimeout(setAppVH, 250)
-      );
-    </script>
     <div class="page">
       <div id="modal" class="modal">
         <img id="modal-img" class="modal-content" />
@@ -368,162 +326,164 @@
         <a href="#" class="logo">LOG. / The Quiet City</a>
       </header>
 
-      <section
-        style="
-          max-width: 600px;
-          margin: 8rem auto 2rem;
-          padding: 0 1.5rem;
-          font-size: 1rem;
-          line-height: 1.7;
-          color: #333;
-          text-align: center;
-        "
-      >
-        <h2 style="font-size: 1.4rem; margin-bottom: 1rem">Statement</h2>
-        <p>雑踏の中で</p>
-        <p>沈黙を切り取る</p>
-      </section>
+      <div class="shell">
+        <section
+          style="
+            max-width: 600px;
+            margin: 8rem auto 2rem;
+            padding: 0 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+            text-align: center;
+          "
+        >
+          <h2 style="font-size: 1.4rem; margin-bottom: 1rem">Statement</h2>
+          <p>雑踏の中で</p>
+          <p>沈黙を切り取る</p>
+        </section>
 
-      <main>
-        <!-- 1 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_00.jpg')"
-            data-exif="Device: RICOH GR III<br>Focal Length: 28mm<br>Aperture: f/2.8<br>ISO: 3,200<br>Shutter: 1/50"
-            role="img"
-            aria-label="路地裏の視線"
-          ></div>
-          <div class="caption">路地裏の視線</div>
-          <div class="date-location">2023.08.03 / Asakusa</div>
-        </div>
-        <hr />
+        <main>
+          <!-- 1 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_00.jpg')"
+              data-exif="Device: RICOH GR III<br>Focal Length: 28mm<br>Aperture: f/2.8<br>ISO: 3,200<br>Shutter: 1/50"
+              role="img"
+              aria-label="路地裏の視線"
+            ></div>
+            <div class="caption">路地裏の視線</div>
+            <div class="date-location">2023.08.03 / Asakusa</div>
+          </div>
+          <hr />
 
-        <!-- 2 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_23.jpg')"
-            data-exif="Device: RICOH GR IIIx<br>Focal Length: 40mm<br>Aperture: f/2.8<br>ISO: 100<br>Shutter: 1/15"
-            role="img"
-            aria-label="PUNKは死んだと言われても"
-          ></div>
-          <div class="caption">PUNKは死んだと言われても</div>
-          <div class="date-location">2021.04.16 / Golden Gai</div>
-        </div>
-        <hr />
+          <!-- 2 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_23.jpg')"
+              data-exif="Device: RICOH GR IIIx<br>Focal Length: 40mm<br>Aperture: f/2.8<br>ISO: 100<br>Shutter: 1/15"
+              role="img"
+              aria-label="PUNKは死んだと言われても"
+            ></div>
+            <div class="caption">PUNKは死んだと言われても</div>
+            <div class="date-location">2021.04.16 / Golden Gai</div>
+          </div>
+          <hr />
 
-        <!-- 3 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_62.jpg')"
-            data-exif="Device: RICOH GR IIIx HDF<br>Focal Length: 40mm<br>Aperture: f/2.8<br>ISO: 10,000<br>Shutter: 1/125"
-            role="img"
-            aria-label="無音のアンプと夜"
-          ></div>
-          <div class="caption">無音のアンプと夜</div>
-          <div class="date-location">2024.07.08 / Kabukicho</div>
-        </div>
-        <hr />
+          <!-- 3 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_62.jpg')"
+              data-exif="Device: RICOH GR IIIx HDF<br>Focal Length: 40mm<br>Aperture: f/2.8<br>ISO: 10,000<br>Shutter: 1/125"
+              role="img"
+              aria-label="無音のアンプと夜"
+            ></div>
+            <div class="caption">無音のアンプと夜</div>
+            <div class="date-location">2024.07.08 / Kabukicho</div>
+          </div>
+          <hr />
 
-        <!-- 4 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_39.jpg')"
-            data-exif="Device: RICOH GR IIIx<br>Focal Length: 40mm<br>Aperture: f/3.2<br>ISO: 100<br>Shutter: 1/160"
-            role="img"
-            aria-label="気配だけが静かに"
-          ></div>
-          <div class="caption">気配だけが静かに</div>
-          <div class="date-location">2021.04.18 / Shinjuku Gyoen</div>
-        </div>
-        <hr />
+          <!-- 4 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_39.jpg')"
+              data-exif="Device: RICOH GR IIIx<br>Focal Length: 40mm<br>Aperture: f/3.2<br>ISO: 100<br>Shutter: 1/160"
+              role="img"
+              aria-label="気配だけが静かに"
+            ></div>
+            <div class="caption">気配だけが静かに</div>
+            <div class="date-location">2021.04.18 / Shinjuku Gyoen</div>
+          </div>
+          <hr />
 
-        <!-- 5 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_08.jpg')"
-            data-exif="Device: RICOH GR IIIx<br>Focal Length: 40mm<br>Aperture: f/2.8<br>ISO: 6,400<br>Shutter: 1/80"
-            role="img"
-            aria-label="その灯りは待つ人のために"
-          ></div>
-          <div class="caption">その灯りは待つ人のために</div>
-          <div class="date-location">2024.12.25 / Shinjuku</div>
-        </div>
-        <hr />
+          <!-- 5 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_08.jpg')"
+              data-exif="Device: RICOH GR IIIx<br>Focal Length: 40mm<br>Aperture: f/2.8<br>ISO: 6,400<br>Shutter: 1/80"
+              role="img"
+              aria-label="その灯りは待つ人のために"
+            ></div>
+            <div class="caption">その灯りは待つ人のために</div>
+            <div class="date-location">2024.12.25 / Shinjuku</div>
+          </div>
+          <hr />
 
-        <!-- 6 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_28.jpg')"
-            data-exif="Device: RICOH GR III<br>Focal Length: 28mm<br>Aperture: f/11<br>ISO: 6,400<br>Shutter: 0.6"
-            role="img"
-            aria-label="過ぎ去った時間がぼやける"
-          ></div>
-          <div class="caption">過ぎ去った時間がぼやける</div>
-          <div class="date-location">2022.10.25 / Golden Gai</div>
-        </div>
-        <hr />
+          <!-- 6 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_28.jpg')"
+              data-exif="Device: RICOH GR III<br>Focal Length: 28mm<br>Aperture: f/11<br>ISO: 6,400<br>Shutter: 0.6"
+              role="img"
+              aria-label="過ぎ去った時間がぼやける"
+            ></div>
+            <div class="caption">過ぎ去った時間がぼやける</div>
+            <div class="date-location">2022.10.25 / Golden Gai</div>
+          </div>
+          <hr />
 
-        <!-- 7 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_07.jpg')"
-            data-exif="Device: PENTAX K-1<br>Focal Length: 77mm<br>Aperture: f/1.8<br>ISO: 200<br>Shutter: 5"
-            role="img"
-            aria-label="ガラス越しの世界"
-          ></div>
-          <div class="caption">ガラス越しの世界</div>
-          <div class="date-location">2021.12.23 / Kabukicho</div>
-        </div>
-        <hr />
+          <!-- 7 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_07.jpg')"
+              data-exif="Device: PENTAX K-1<br>Focal Length: 77mm<br>Aperture: f/1.8<br>ISO: 200<br>Shutter: 5"
+              role="img"
+              aria-label="ガラス越しの世界"
+            ></div>
+            <div class="caption">ガラス越しの世界</div>
+            <div class="date-location">2021.12.23 / Kabukicho</div>
+          </div>
+          <hr />
 
-        <!-- 8 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_13.jpg')"
-            data-exif="Device: PENTAX K-1<br>Focal Length: 43mm<br>Aperture: f/1.9<br>ISO: 6,400<br>Shutter: 1/4"
-            role="img"
-            aria-label="ぶれているのこの街か"
-          ></div>
-          <div class="caption">ぶれているのこの街か</div>
-          <div class="date-location">2022.04.02 / Kabukicho</div>
-        </div>
-        <hr />
+          <!-- 8 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_13.jpg')"
+              data-exif="Device: PENTAX K-1<br>Focal Length: 43mm<br>Aperture: f/1.9<br>ISO: 6,400<br>Shutter: 1/4"
+              role="img"
+              aria-label="ぶれているのこの街か"
+            ></div>
+            <div class="caption">ぶれているのこの街か</div>
+            <div class="date-location">2022.04.02 / Kabukicho</div>
+          </div>
+          <hr />
 
-        <!-- 9 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_59.jpg')"
-            data-exif="Device: RICOH GR IIIx HDF<br>Focal Length: 40mm<br>Aperture: f/4.5<br>ISO: 100<br>Shutter: 1/320"
-            role="img"
-            aria-label="音のない空に揺れる"
-          ></div>
-          <div class="caption">音のない空に揺れる</div>
-          <div class="date-location">2024.06.23 / Shinjuku Gyoen</div>
-        </div>
-        <hr />
+          <!-- 9 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_59.jpg')"
+              data-exif="Device: RICOH GR IIIx HDF<br>Focal Length: 40mm<br>Aperture: f/4.5<br>ISO: 100<br>Shutter: 1/320"
+              role="img"
+              aria-label="音のない空に揺れる"
+            ></div>
+            <div class="caption">音のない空に揺れる</div>
+            <div class="date-location">2024.06.23 / Shinjuku Gyoen</div>
+          </div>
+          <hr />
 
-        <!-- 10 -->
-        <div class="entry photo-block">
-          <div
-            class="photo"
-            style="background-image: url('assets/images/silent_01.jpg')"
-            data-exif="Device: Galaxy S25 Ultra<br>Focal Length: 23mm<br>Aperture: f/3.4<br>ISO: 64<br>Shutter: 1/400"
-            role="img"
-            aria-label="鳥居の先は別世界"
-          ></div>
-          <div class="caption">鳥居の先は別世界</div>
-          <div class="date-location">2025.07.28 / Meiji Jingu</div>
-        </div>
-      </main>
+          <!-- 10 -->
+          <div class="entry photo-block">
+            <div
+              class="photo"
+              style="background-image: url('assets/images/silent_01.jpg')"
+              data-exif="Device: Galaxy S25 Ultra<br>Focal Length: 23mm<br>Aperture: f/3.4<br>ISO: 64<br>Shutter: 1/400"
+              role="img"
+              aria-label="鳥居の先は別世界"
+            ></div>
+            <div class="caption">鳥居の先は別世界</div>
+            <div class="date-location">2025.07.28 / Meiji Jingu</div>
+          </div>
+        </main>
+      </div>
 
       <footer>
         <nav>
