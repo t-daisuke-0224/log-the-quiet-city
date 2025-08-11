@@ -68,8 +68,7 @@
       }
 
       body {
-        /* スクロールバー分のレイアウトを確保して左右の見え方を安定化 */
-        scrollbar-gutter: stable;
+        /* ▼▼▼ 修正点: scrollbar-gutter: stable; を削除 ▼▼▼ */
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
           sans-serif;
@@ -90,7 +89,6 @@
       section h2{font-size:clamp(18px,1.4rem,22px);margin:0 0 1rem}
       section p{line-height:1.8;letter-spacing:.02em;margin:.6rem 0}
 
-      /* ▼▼▼ 修正点: align-itemsをcenterに変更 ▼▼▼ */
       main{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:4rem 0 2rem}
       .photo-block{margin:64px 0;width:100%}
       .photo{width:var(--figure-w);aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
