@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="dark light" />
     <title>About – LOG. / The Quiet City</title>
     <style>
       :root {
@@ -27,19 +27,19 @@
         overflow-x: hidden;
       }
       /* WebKit-based browsers (Chrome/Safari) */
-      *::-webkit-scrollbar {
+      html::-webkit-scrollbar {
         width: 10px;
         height: 10px;
       }
-      *::-webkit-scrollbar-track {
+      html::-webkit-scrollbar-track {
         background: var(--bg);
       }
-      *::-webkit-scrollbar-thumb {
+      html::-webkit-scrollbar-thumb {
         background-color: #333;
         border-radius: 8px;
         border: 2px solid var(--bg);
       }
-      *::-webkit-scrollbar-thumb:hover {
+      html::-webkit-scrollbar-thumb:hover {
         background-color: #444;
       }
       body {
@@ -94,6 +94,10 @@
       .wrap {
         max-width: 820px;
         text-align: center;
+      }
+      .photo {
+        width: clamp(520px, 80vmin, 640px);
+        height: auto;
       }
       .manifesto {
         font-size: clamp(24px, 4.5vw, 44px);
