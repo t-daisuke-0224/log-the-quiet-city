@@ -5,22 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <title>LOG. / The Quiet City</title>
-    <meta
-      name="description"
-      content="LOG. / The Quiet City — 静けさの中に漂う都市の表情を切り取る写真プロジェクト。モノクロームの東京、日常に潜む非日常を記録します。"
-    />
+    <meta name="description" content="LOG. / The Quiet City — 静けさの中に漂う都市の表情を切り取る写真プロジェクト。モノクロームの東京、日常に潜む非日常を記録します。" />
     <link rel="canonical" href="https://USERNAME.github.io/REPO/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="LOG. / The Quiet City" />
-    <meta
-      property="og:description"
-      content="静けさの中に漂う都市の表情を切り取る写真プロジェクト。"
-    />
+    <meta property="og:description" content="静けさの中に漂う都市の表情を切り取る写真プロジェクト。" />
     <meta property="og:image" content="favicon.png" />
     <meta property="og:locale" content="ja_JP" />
     <meta name="robots" content="index,follow" />
     <style>
-      :root { --content-width: 640px; --side-pad: 16px; }
       html {
         color-scheme: light;
       }
@@ -79,140 +72,33 @@
         overflow-anchor: none;
       }
       /* === Common, simplified responsive shell === */
-      html,
-      body {
-        height: 100%;
-      }
-      .page {
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-      .shell {
-        max-width: var(--content-width);
-        margin: 0 auto;
-        padding: 0 var(--side-pad);
-      }
-      .entry { width: 100%; }
+      html,body{height:100%}
+      .page{min-height:100%;display:flex;flex-direction:column}
+      .shell{max-width:640px;margin:0 auto;padding:0 16px}
 
-      section {
-        margin: 8rem 0 2rem;
-        text-align: center;
-      }
-      section h2 {
-        font-size: clamp(18px, 1.4rem, 22px);
-        margin: 0 0 1rem;
-      }
-      section p {
-        line-height: 1.8;
-        letter-spacing: 0.02em;
-        margin: 0.6rem 0;
-      }
+      section{margin:8rem 0 2rem;text-align:center}
+      section h2{font-size:clamp(18px,1.4rem,22px);margin:0 0 1rem}
+      section p{line-height:1.8;letter-spacing:.02em;margin:.6rem 0}
 
-      main {
-        flex: 1 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 4rem 2rem 2rem;
-      }
-      .photo-block {
-        margin: 64px 0;
-      }
-      .photo {
-        width: clamp(260px, 90vw, 600px);
-        max-width: 100%;
-        aspect-ratio: 1/1;
-        background: #000 center/cover;
-        margin: 0 auto 24px;
-        border: 1px solid #ddd;
-        box-sizing: border-box;
-        transition: transform 0.3s ease;
-        display: block;
-      }
-      .photo:hover {
-        transform: scale(1.02);
-      }
-      .caption {
-        font-size: 0.95rem;
-        color: #222;
-        max-width: 500px;
-        margin: 0.25rem auto 0.25rem;
-        line-height: 1.6;
-        letter-spacing: 0.02em;
-      }
-      .date-location {
-        margin-top: 0.5rem;
-        font-size: 0.85rem;
-        color: #666;
-        letter-spacing: 0.015em;
-      }
-      .entry + hr {
-        margin: 32px auto 96px;
-        border: 0;
-        border-top: 1px solid #ddd;
-        width: min(86%, 600px);
-      }
+      main{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:4rem 2rem 2rem}
+      .photo-block{margin:64px 0}
+      .photo{width:100%;max-width:600px;aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
+      .photo:hover{transform:scale(1.02)}
+      .caption{font-size:.95rem;color:#222;max-width:500px;margin:.25rem auto .25rem;line-height:1.6;letter-spacing:.02em}
+      .date-location{margin-top:.5rem;font-size:.85rem;color:#666;letter-spacing:.015em}
+      .entry+hr{margin:32px auto 96px;border:0;border-top:1px solid #ddd;width:min(86%,600px)}
 
       /* Footer: strict centering, no side padding bias */
-      footer {
-        position: static;
-        width: 100%;
-        margin-top: auto;
-        text-align: center;
-        font-size: 0.8rem;
-        color: #aaa;
-        border-top: 1px solid #ddd;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 0 max(64px, env(safe-area-inset-bottom));
-        background: #fff;
-        box-sizing: border-box;
-      }
-      footer .footer-inner {
-        max-width: var(--content-width);
-        margin: 0 auto;
-        padding: 0 var(--side-pad);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      footer .copyright { line-height: 1; }
-      footer nav {
-        display: inline-flex;
-        gap: 0.5rem;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-        padding: 0 16px;
-      }
-      footer nav a {
-        color: #aaa;
-        text-decoration: none;
-        margin: 0 0.5rem;
-        font-size: 0.85rem;
-      }
-      footer nav a:hover {
-        text-decoration: underline;
-      }
-      footer * {
-        box-sizing: inherit;
-        margin: 0;
-      }
+      footer{position:static;width:100%;margin-top:auto;text-align:center;font-size:.8rem;color:#aaa;border-top:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 0 max(64px, env(safe-area-inset-bottom));background:#fff;box-sizing:border-box}
+      footer nav{display:inline-flex;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1rem;padding:0 16px}
+      footer nav a{color:#aaa;text-decoration:none;margin:0 .5rem;font-size:.85rem}
+      footer nav a:hover{text-decoration:underline}
+      footer *{box-sizing:inherit;margin:0}
 
-      @media (max-width: 640px) {
-        section {
-          margin: 7rem 0 1.5rem;
-        }
-        .photo-block {
-          margin: 56px 0;
-        }
-        .entry + hr {
-          margin: 28px auto 80px;
-        }
+      @media (max-width:640px){
+        section{margin:7rem 0 1.5rem}
+        .photo-block{margin:56px 0}
+        .entry+hr{margin:28px auto 80px}
       }
 
       .sticky-header {
@@ -498,13 +384,14 @@
       </div>
 
       <footer>
-        <div class="footer-inner">
-          <nav>
-            <a href="#">All</a> / <a href="about.html">About</a> /
-            <a href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG">Contact</a>
-          </nav>
-          <div class="copyright">&copy; 2025 Daisuke Takaku</div>
-        </div>
+        <nav>
+          <a href="#">All</a> / <a href="about.html">About</a> /
+          <a
+            href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG"
+            >Contact</a
+          >
+        </nav>
+        &copy; 2025 Daisuke Takaku
       </footer>
     </div>
     <!-- /.page -->
