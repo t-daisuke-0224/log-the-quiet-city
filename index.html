@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <title>LOG. / The Quiet City</title>
-    <meta name="description" content="LOG. / The Quiet City — 静けさの中に漂う都市の表情を切り取る写真プロジェクト。モノクロームの東京、日常に潜む非日常を記録します。" />
+    <meta
+      name="description"
+      content="LOG. / The Quiet City — 静けさの中に漂う都市の表情を切り取る写真プロジェクト。モノクロームの東京、日常に潜む非日常を記録します。"
+    />
     <link rel="canonical" href="https://USERNAME.github.io/REPO/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="LOG. / The Quiet City" />
-    <meta property="og:description" content="静けさの中に漂う都市の表情を切り取る写真プロジェクト。" />
+    <meta
+      property="og:description"
+      content="静けさの中に漂う都市の表情を切り取る写真プロジェクト。"
+    />
     <meta property="og:image" content="favicon.png" />
     <meta property="og:locale" content="ja_JP" />
     <meta name="robots" content="index,follow" />
@@ -32,14 +38,35 @@
     </style>
     <style>
       /* 常に縦スクロールバーを確保して左右のセンタリング差を無くす */
-      html { overflow-y: scroll; }
-      *,*::before,*::after{box-sizing:border-box}
+      html {
+        overflow-y: scroll;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
       /* Scrollbar styling (light page) */
-      :root{--scroll-track:#fff;--scroll-thumb:#e0e0e0}
-      *::-webkit-scrollbar{width:12px;height:12px}
-      *::-webkit-scrollbar-track{background:var(--scroll-track)}
-      *::-webkit-scrollbar-thumb{background:var(--scroll-thumb);border-radius:8px;border:3px solid var(--scroll-track)}
-      html{scrollbar-color:var(--scroll-thumb) var(--scroll-track);scrollbar-width:thin}
+      :root {
+        --scroll-track: #fff;
+        --scroll-thumb: #e0e0e0;
+      }
+      *::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+      }
+      *::-webkit-scrollbar-track {
+        background: var(--scroll-track);
+      }
+      *::-webkit-scrollbar-thumb {
+        background: var(--scroll-thumb);
+        border-radius: 8px;
+        border: 3px solid var(--scroll-track);
+      }
+      html {
+        scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+        scrollbar-width: thin;
+      }
       .modal {
         display: none;
         position: fixed;
@@ -69,8 +96,7 @@
 
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
-          sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
         background-color: #fff;
         color: #111;
         overflow-x: hidden;
@@ -79,37 +105,151 @@
         overflow-anchor: none;
       }
       /* === Common, simplified responsive shell === */
-      html,body{height:100%}
+      html,
+      body {
+        height: 100%;
+      }
       /* ▼▼▼ 修正点: clampの値を最終調整 ▼▼▼ */
-      :root{--figure-w: clamp(280px, 80vmin, 640px)}
-      .page{min-height:100%;display:flex;flex-direction:column}
-      .shell{max-width:none;margin:0 auto;padding:0}
+      :root {
+        --figure-w: clamp(280px, 80vmin, 640px);
+      }
+      .page {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .shell {
+        max-width: none;
+        margin: 0 auto;
+        padding: 0;
+      }
 
-      section{margin:8rem 0 2rem;text-align:center}
-      section h2{font-size:clamp(18px,1.4rem,22px);margin:0 0 1rem}
-      section p{line-height:1.8;letter-spacing:.02em;margin:.6rem 0}
+      section {
+        margin: 8rem 0 2rem;
+        text-align: center;
+      }
+      section h2 {
+        font-size: clamp(18px, 1.4rem, 22px);
+        margin: 0 0 1rem;
+      }
+      section p {
+        line-height: 1.8;
+        letter-spacing: 0.02em;
+        margin: 0.6rem 0;
+      }
 
-      main{flex:1 0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;padding:4rem 0 2rem}
-      .photo-block{margin:64px 0;width:100%}
-      .photo{width:var(--figure-w);aspect-ratio:1/1;background:#000 center/cover;margin:0 auto 24px;border:1.5px solid #ddd;box-sizing:border-box;transition:transform .3s ease}
-      .photo:hover{transform:scale(1.02)}
-      .caption{font-size:.95rem;color:#222;width:var(--figure-w);margin:.25rem auto .25rem;line-height:1.6;letter-spacing:.02em}
-      .date-location{margin-top:.5rem;font-size:.85rem;color:#666;letter-spacing:.015em;width:var(--figure-w);margin-left:auto;margin-right:auto}
-      .entry+hr{margin:96px auto;border:0;border-top:1px solid #ddd;width:var(--figure-w)}
+      main {
+        flex: 1 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 0 2rem;
+      }
+      .photo-block {
+        margin: 64px 0;
+        width: 100%;
+      }
+      .photo {
+        width: var(--figure-w);
+        aspect-ratio: 1/1;
+        background: #000 center/cover;
+        margin: 0 auto 24px;
+        border: 1.5px solid #ddd;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+      }
+      .photo:hover {
+        transform: scale(1.02);
+      }
+      .caption {
+        font-size: 0.95rem;
+        color: #222;
+        width: var(--figure-w);
+        margin: 0.25rem auto 0.25rem;
+        line-height: 1.6;
+        letter-spacing: 0.02em;
+      }
+      .date-location {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #666;
+        letter-spacing: 0.015em;
+        width: var(--figure-w);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .entry + hr {
+        margin: 96px auto;
+        border: 0;
+        border-top: 1px solid #ddd;
+        width: var(--figure-w);
+      }
 
       /* Footer: strict centering, no side padding bias */
-      footer{position:static;width:100%;margin-top:auto;text-align:center;font-size:.8rem;color:#aaa;border-top:1px solid #ddd;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 0 max(64px, env(safe-area-inset-bottom));background:#fff;box-sizing:border-box}
-      footer nav{display:inline-flex;gap:.5rem;align-items:center;justify-content:center;margin-bottom:1rem;padding:0;white-space:nowrap}
-      footer nav a{color:#aaa;text-decoration:none;margin:0 .5rem;font-size:.85rem}
-      footer nav a:hover{text-decoration:underline}
-      footer *{box-sizing:inherit;margin:0}
-      .footer-inner{width:var(--figure-w);max-width:var(--figure-w);margin:0 auto;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-      .copyright{line-height:1}
+      footer {
+        position: static;
+        width: 100%;
+        margin-top: auto;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #aaa;
+        border-top: 1px solid #ddd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0 max(64px, env(safe-area-inset-bottom));
+        background: #fff;
+        box-sizing: border-box;
+      }
+      footer nav {
+        display: inline-flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        padding: 0;
+        white-space: nowrap;
+      }
+      footer nav a {
+        color: #aaa;
+        text-decoration: none;
+        margin: 0 0.5rem;
+        font-size: 0.85rem;
+      }
+      footer nav a:hover {
+        text-decoration: underline;
+      }
+      footer * {
+        box-sizing: inherit;
+        margin: 0;
+      }
+      .footer-inner {
+        width: var(--figure-w);
+        max-width: var(--figure-w);
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .copyright {
+        line-height: 1;
+      }
 
-      @media (max-width:640px){
-        section{margin:7rem 0 1.5rem}
-        .photo-block{margin:56px 0}
-        .entry+hr{margin:80px auto}
+      @media (max-width: 640px) {
+        section {
+          margin: 7rem 0 1.5rem;
+        }
+        .photo-block {
+          margin: 56px 0;
+        }
+        .entry + hr {
+          margin: 80px auto;
+        }
       }
 
       .sticky-header {
@@ -238,14 +378,14 @@
       <div class="shell">
         <section
           style="
-  width: var(--figure-w);
-  margin: 8rem auto 2rem;
-  padding: 0;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #333;
-  text-align: center;
-"
+            width: var(--figure-w);
+            margin: 8rem auto 2rem;
+            padding: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+            text-align: center;
+          "
         >
           <h2 style="font-size: 1.4rem; margin-bottom: 1rem">Statement</h2>
           <p>雑踏の中で</p>
@@ -398,7 +538,10 @@
         <div class="footer-inner">
           <nav>
             <a href="#">All</a> / <a href="about.html">About</a> /
-            <a href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG">Contact</a>
+            <a
+              href="mailto:h.syousuke.0224@gmail.com?subject=Inquiry%20from%20LOG"
+              >Contact</a
+            >
           </nav>
           <div class="copyright">&copy; 2025 Daisuke Takaku</div>
         </div>
